@@ -11,9 +11,9 @@ import { ColorSchemeName, Pressable } from "react-native";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
+import { Profile, SignIn } from "../screens";
 import Home from "../screens/home";
 
-import TabTwoScreen from "../screens/TabTwoScreen";
 import {
   RootStackParamList,
   RootTabParamList,
@@ -44,6 +44,12 @@ function RootNavigator() {
       <Stack.Screen
         name="Home"
         component={BottomTabNavigator}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="SignIn"
+        component={SignIn}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
@@ -87,7 +93,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Publication"
-        component={TabTwoScreen}
+        component={SignIn}
         options={{
           title: "Publication",
           tabBarIcon: ({ color }) => (
@@ -98,7 +104,7 @@ function BottomTabNavigator() {
 
       <BottomTab.Screen
         name="Profile"
-        component={TabTwoScreen}
+        component={Profile}
         options={{
           title: "Profile",
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
