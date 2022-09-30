@@ -1,12 +1,15 @@
 import { View, Text } from "react-native";
 import React from "react";
 import Card from "../card";
+import { CardComponent } from "./styles";
 
 const PublicationComponent = () => {
   return (
-    <View>
+    <CardComponent>
       <Card />
-    </View>
+      <Card />
+      <Card />
+    </CardComponent>
   );
 };
 
