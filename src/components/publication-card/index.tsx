@@ -3,7 +3,7 @@ import { Image } from "react-native";
 import HeaderCardComponent from "./header";
 import { Container, ActionContainer, InfoContainer } from "./styles";
 
-const Card = () => {
+const PublicationCard = () => {
   return (
     <Container>
       <HeaderCardComponent />
@@ -17,4 +17,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default PublicationCard;

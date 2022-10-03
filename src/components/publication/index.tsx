@@ -1,13 +1,13 @@
 import React from "react";
-import Card from "../card";
+import PublicationCard from "../publication-card";
 import { CardComponent } from "./styles";
 
 const PublicationComponent = () => {
   return (
     <CardComponent>
-      <Card />
-      <Card />
-      <Card />
+      <PublicationCard />
+      <PublicationCard />
+      <PublicationCard />
     </CardComponent>
   );
 };
