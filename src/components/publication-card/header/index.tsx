@@ -20,6 +20,7 @@ const HeaderCardComponent = () => {
         </ProfilePictureContainer>
         <Title>Eliza Samúdio</Title>
       </ProfileContainer>
+
       <FontAwesome name="ellipsis-v" size={20} color="black" />
     </HeaderCard>
   );

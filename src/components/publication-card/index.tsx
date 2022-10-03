@@ -1,5 +1,6 @@
 import React from "react";
 import { Image } from "react-native";
+import ActionsButtons from "./actions-buttons";
 import HeaderCardComponent from "./header";
 import { Container, ActionContainer, InfoContainer } from "./styles";
 
@@ -8,10 +9,10 @@ const PublicationCard = () => {
     <Container>
       <HeaderCardComponent />
       <Image
-        style={{ height: 500, width: "100%" }}
+        style={{ height: 500, width: "100%", resizeMode: "stretch" }}
         source={require("../../assets/images/mulher.png")}
       />
-      <ActionContainer />
+      <ActionsButtons />
       <InfoContainer />
     </Container>
   );

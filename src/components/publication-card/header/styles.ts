@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const HeaderCard = styled.View`
-  height: 7%;
+  height: 8%;
   background-color: white;
   align-items: center;
   justify-content: space-between;
