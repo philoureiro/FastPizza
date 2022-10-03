@@ -42,7 +42,7 @@ function RootNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Home"
+        name="Root"
         component={BottomTabNavigator}
         options={{ headerShown: false }}
       />
