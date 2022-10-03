@@ -9,11 +9,6 @@ export const Container = styled.View`
   border-style: solid;
 `;
 
-export const HeaderCard = styled.View`
-  height: 10%;
-  background-color: red;
-`;
-
 export const ImageComponent = styled.Image`
   background-color: white;
   border-top: 100px;

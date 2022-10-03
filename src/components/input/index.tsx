@@ -1,5 +1,5 @@
-import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
-import { Box, FormControl, Input, View, WarningOutlineIcon } from "native-base";
+import { FontAwesome } from "@expo/vector-icons";
+import { Box, FormControl, Input } from "native-base";
 import React from "react";
 
 const InputComponent = () => {

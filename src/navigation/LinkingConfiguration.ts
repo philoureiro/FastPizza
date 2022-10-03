@@ -1,12 +1,17 @@
 import { LinkingOptions } from "@react-navigation/native";
 import * as Linking from "expo-linking";
 
-import { RootStackParamList } from "../types";
+import { RootStackParamList } from "../../types";
 
 const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.createURL("/")],
   config: {
     screens: {
+      SignIn: {
+        screens: {
+          Profile: "SignIn",
+        },
+      },
       Home: {
         screens: {
           Home: {
@@ -21,13 +26,11 @@ const linking: LinkingOptions<RootStackParamList> = {
           },
           Profile: {
             screens: {
-              Profile: "Publication",
+              Profile: "Profile",
             },
           },
         },
       },
-      Modal: "modal",
-      NotFound: "*",
     },
   },
 };
