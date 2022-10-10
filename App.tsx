@@ -6,6 +6,7 @@ import { useFonts, Pacifico_400Regular } from "@expo-google-fonts/pacifico";
 import useCachedResources from "./src/hooks/useCachedResources";
 import useColorScheme from "./src/hooks/useColorScheme";
 import Navigation from "./src/navigation";
+import { AuthProvider } from "./src/contexts/Auth/Auth";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -20,10 +21,12 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <NativeBaseProvider>
-          <Navigation colorScheme={colorScheme} />
-        </NativeBaseProvider>
-        <StatusBar />
+        <AuthProvider>
+          <NativeBaseProvider>
+            <Navigation colorScheme={colorScheme} />
+          </NativeBaseProvider>
+          <StatusBar />
+        </AuthProvider>
       </SafeAreaProvider>
     );
   }

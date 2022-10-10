@@ -1,4 +1,8 @@
-import { Image } from "react-native";
+import {
+  Image,
+  NativeSyntheticEvent,
+  TextInputChangeEventData,
+} from "react-native";
 import {
   ButtonComponent,
   Container,
@@ -9,7 +13,9 @@ import {
   TextC,
 } from "./styles";
 import icon from "../../../assets/Icon.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useAuth } from "../../../contexts/Auth/Auth";
+import { AccountModel } from "../../../contexts/Auth/AuthType";
 
 interface IData {
   sucess: boolean;
@@ -21,45 +27,66 @@ interface IData {
     email: string;
     __v: number;
   };
-  token?: string;
+  token: string;
 }
 
 const FormsComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [data, setData] = useState();
-  function handleLogin() {
-    fetch(`https://fastpizza-api.herokuapp.com/user/authenticate`, {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      mode: "cors",
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    });
-  }
+  const authContext = useAuth();
 
-  useEffect(() => {});
+  const handleLogin = async () => {
+    try {
+      const res = await fetch(
+        `https://fastpizza-api.herokuapp.com/user/authenticate`,
+        {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          mode: "cors",
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
+        }
+      );
+
+      if (res.ok) {
+        const data: IData = await res.json();
+        if (data.data) {
+          const userInfo: AccountModel = {
+            token: data.token,
+            _id: data.data._id,
+            name: data.data.name,
+            email: data.data.email,
+          };
+          authContext.signIn(userInfo);
+        }
+      } else {
+        console.log(res);
+      }
+    } catch (error) {}
+  };
   return (
     <Container>
       <InputComponent
-        placeholder={"Username"}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setEmail(e.target.value)
-        }
+        placeholder={"Email"}
+        type={email}
+        onChange={(e: NativeSyntheticEvent<TextInputChangeEventData>) => {
+          const value = e.nativeEvent.text;
+          setEmail(value);
+        }}
       />
       <InputComponent
         placeholder={"Password"}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setPassword(e.target.value)
-        }
+        secureTextEntry={true}
+        onChange={(e: NativeSyntheticEvent<TextInputChangeEventData>) => {
+          const value = e.nativeEvent.text;
+          setPassword(value);
+        }}
       />
       <TextComponent>Forgot password?</TextComponent>
-      <ButtonComponent>
-        <TextComponentCenter onPress={handleLogin()}>
-          Log in
-        </TextComponentCenter>
+      <ButtonComponent onPress={() => handleLogin()}>
+        <TextComponentCenter>Log in</TextComponentCenter>
       </ButtonComponent>
       <Box>
         <Image source={icon} />
