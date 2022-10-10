@@ -7,3 +7,6 @@ Clonar o repositorio, atraves da linha de comando na raiz do projeto digitar "ya
 #Tecologias utilizadas
 
 Foi utilizado React Native e Typescript para produzir o aplicativo mobile, o qual é alimentado por um backend em Typescript com MongoDB
+
+#Testes automatizados
+Os testes estão localizados dentro da pasta src/components/__tests__
